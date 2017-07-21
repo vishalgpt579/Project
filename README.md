@@ -1,2 +1,2 @@
 # Project
-Files pertaining to college project will be shared on this repository
+Files related college project will be shared on this repository
