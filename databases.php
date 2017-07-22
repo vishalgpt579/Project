@@ -1,6 +1,5 @@
 <!--This is code is not complete yet-->
 
-
 <?php
 //Create a database connection
 	$dbhost = "192.168.1.36";
@@ -42,18 +41,28 @@ td, th {
     width: 50%;
 
 }
+th {
+    border: 0px solid black;
+    text-align: center;
+    font-size: 18;
+    vertical-align: center;
+    padding: 12px;
+    width: 50%;
 
+}
 tr:nth-child(even) {
     background-color: #f5f5f5;
 }
 
 .on {
 	background-color: #00ffb4;
-	font-size: 12;
+	font-size: 10;
+	padding: 6px;
 }
 .off {
 	background-color: #ffa030;
-	font-size: 12;
+	font-size: 10;
+	padding: 6px;
 }
 </style>
 </head>
@@ -63,12 +72,14 @@ tr:nth-child(even) {
 	$avg_time = [];
 	$ip_address = [];
 	$status = [];
+	$avg_speed = [];
 	$i = 0;
 	while($tempstring = mysqli_fetch_assoc($result))
 	{
 		$avg_time[$i]=$tempstring["avg_time"];
 		$ip_address[$i]=$tempstring["ip_address"];
 		$status[$i]=$tempstring["status"];
+		$avg_speed[$i]=round(64/$avg_time[$i],2);
 		$i++;
 	}
 
@@ -77,14 +88,14 @@ tr:nth-child(even) {
 <h2><b><u>Data Monitoring</u></b></h2>
 <table>
   <tr>
-    <th>IP Address</th>
-    <th>Speed</th>
-    <th>Status</th>
+    <th style="border-left: 2px solid black; border-top: 2px solid black">IP Address</th>
+    <th style="border-top: 2px solid black">Speed (MB/s)</th>
+    <th style="border-right: 2px solid black; border-top: 2px solid black">Status</th>
   </tr>
   <tr>
-    <td><?php echo("$ip_address[0]")?></td>
-    <td><?php echo("$avg_time[0]")?></td>
-    <td>
+    <td style="border-left: 2px solid black"><?php echo("$ip_address[0]")?></td>
+    <td><?php echo("$avg_speed[0]")?></td>
+    <td style="border-right: 2px solid black">
     <?php if($status[0] == 1) { ?>
     <p class="on">ON</p>
     <?php }else{?>
@@ -93,9 +104,9 @@ tr:nth-child(even) {
     </td>
   </tr>
   <tr>
-    <td><?php echo("$ip_address[1]")?></td>
-    <td><?php echo("$avg_time[1]")?></td>
-    <td>
+    <td style="border-left: 2px solid black"><?php echo("$ip_address[1]")?></td>
+    <td><?php echo("$avg_speed[1]")?></td>
+    <td style="border-right: 2px solid black">
     <?php if($status[1] == 1) { ?>
     <p class="on">ON</p>
     <?php }else{?>
@@ -104,9 +115,9 @@ tr:nth-child(even) {
     </td>
   </tr>
   <tr>
-    <td><?php echo("$ip_address[2]")?></td>
-    <td><?php echo("$avg_time[2]")?></td>
-    <td>
+    <td style="border-left: 2px solid black"><?php echo("$ip_address[2]")?></td>
+    <td><?php echo("$avg_speed[2]")?></td>
+    <td style="border-right: 2px solid black">
     <?php if($status[2] == 1) { ?>
     <p class="on">ON</p>
     <?php }else{?>
@@ -115,9 +126,9 @@ tr:nth-child(even) {
     </td>
   </tr>
   <tr>
-    <td><?php echo("$ip_address[3]")?></td>
-    <td><?php echo("$avg_time[3]")?></td>
-    <td>
+    <td style="border-left: 2px solid black"><?php echo("$ip_address[3]")?></td>
+    <td><?php echo("$avg_speed[3]")?></td>
+    <td style="border-right: 2px solid black">
     <?php if($status[3] == 1) { ?>
     <p class="on">ON</p>
     <?php }else{?>
@@ -126,9 +137,9 @@ tr:nth-child(even) {
     </td>
   </tr>
   <tr>
-    <td><?php echo("$ip_address[4]")?></td>
-    <td><?php echo("$avg_time[4]")?></td>
-    <td>
+    <td style="border-left: 2px solid black"><?php echo("$ip_address[4]")?></td>
+    <td><?php echo("$avg_speed[4]")?></td>
+    <td style="border-right: 2px solid black">
     <?php if($status[4] == 1) { ?>
     <p class="on">ON</p>
     <?php }else{?>
@@ -137,9 +148,9 @@ tr:nth-child(even) {
     </td>
   </tr>
   <tr>
-    <td><?php echo("$ip_address[5]")?></td>
-    <td><?php echo("$avg_time[5]")?></td>
-    <td>
+    <td style="border-left: 2px solid black"><?php echo("$ip_address[5]")?></td>
+    <td><?php echo("$avg_speed[5]")?></td>
+    <td style="border-right: 2px solid black">
     <?php if($status[5] == 1) { ?>
     <p class="on">ON</p>
     <?php }else{?>
@@ -148,9 +159,9 @@ tr:nth-child(even) {
     </td>
   </tr>
   <tr>
-    <td><?php echo("$ip_address[6]")?></td>
-    <td><?php echo("$avg_time[6]")?></td>
-    <td>
+    <td style="border-left: 2px solid black"><?php echo("$ip_address[6]")?></td>
+    <td><?php echo("$avg_speed[6]")?></td>
+    <td style="border-right: 2px solid black">
     <?php if($status[6] == 1) { ?>
     <p class="on">ON</p>
     <?php }else{?>
@@ -159,9 +170,9 @@ tr:nth-child(even) {
     </td>
   </tr>
   <tr>
-    <td><?php echo("$ip_address[7]")?></td>
-    <td><?php echo("$avg_time[7]")?></td>
-    <td>
+    <td style="border-left: 2px solid black"><?php echo("$ip_address[7]")?></td>
+    <td><?php echo("$avg_speed[7]")?></td>
+    <td style="border-right: 2px solid black">
     <?php if($status[7] == 1) { ?>
     <p class="on">ON</p>
     <?php }else{?>
@@ -170,9 +181,9 @@ tr:nth-child(even) {
     </td>
   </tr>
   <tr>
-    <td><?php echo("$ip_address[8]")?></td>
-    <td><?php echo("$avg_time[8]")?></td>
-    <td>
+    <td style="border-left: 2px solid black"><?php echo("$ip_address[8]")?></td>
+    <td><?php echo("$avg_speed[8]")?></td>
+    <td style="border-right: 2px solid black">
     <?php if($status[8] == 1) { ?>
     <p class="on">ON</p>
     <?php }else{?>
@@ -181,9 +192,9 @@ tr:nth-child(even) {
     </td>
   </tr>
   <tr>
-    <td><?php echo("$ip_address[9]")?></td>
-    <td><?php echo("$avg_time[9]")?></td>
-    <td>
+    <td style="border-left: 2px solid black; border-bottom: 2px solid black"><?php echo("$ip_address[9]")?></td>
+    <td style=" border-bottom: 2px solid black"><?php echo("$avg_speed[9]")?></td>
+    <td style="border-right: 2px solid black; border-bottom: 2px solid black">
     <?php if($status[9] == 1) { ?>
     <p class="on">ON</p>
     <?php }else{?>
