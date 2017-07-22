@@ -31,13 +31,15 @@
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: 50%;
 }
 
 td, th {
-    border: 4px solid #dddddd;
-    text-align: left;
+    border: 2px solid black;
+    text-align: center;
+    vertical-align: center;
     padding: 8px;
+
 }
 
 tr:nth-child(even) {
@@ -58,17 +60,8 @@ tr:nth-child(even) {
 		$i++;
 	}
 
-//This echos avg_time
-	// for($i=0 ; $i<=9 ; $i++){
-		// echo("$avg_time[$i]\n\n");
-	// }
-
-//This echos ip_address
-	// for($i=0 ; $i<=9 ; $i++){
-		// echo("$ip_address[$i]\n\n");
-	// }
 ?>
-
+<center>
 <table>
   <tr>
     <th>IP Address</th>
@@ -125,9 +118,8 @@ tr:nth-child(even) {
     <td><?php echo("$avg_time[9]")?></td>
     <td>ON</td>
   </tr>
-
 </table>
-
+</center>
 <?php
 //Release the data
 	mysqli_free_result($result);
