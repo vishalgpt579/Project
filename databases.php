@@ -1,3 +1,6 @@
+<!--This is code is not complete yet-->
+
+
 <?php
 //Create a database connection
 	$dbhost = "192.168.1.36";
@@ -28,16 +31,28 @@ Test Page
 <body>
 
 <?php
-	$tempvariable = [];
+	$avg_time = [];
+	$ip_address = [];
 	$i = 0;
 	while($tempstring = mysqli_fetch_assoc($result))
 	{
-		$tempvariable[$i]=$tempstring["avg_time"];
+		$avg_time[$i]=$tempstring["avg_time"];
+		$ip_address[$i]=$tempstring["ip_address"];
 		$i++;
 	}
 
-//This will echo 
-	echo($tempvariable[5]);
+//This echos avg_time
+	for($i=0 ; $i<=9 ; $i++){
+		echo("$avg_time[$i]\n\n");
+	}
+?>
+<br />
+<hr />
+<?php
+//This echos ip_address
+	for($i=0 ; $i<=9 ; $i++){
+		echo("$ip_address[$i]\n\n");
+	}
 
 //Release the data
 	mysqli_free_result($result);
