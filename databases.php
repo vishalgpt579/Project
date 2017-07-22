@@ -1,94 +1,91 @@
 <!--This is code is not complete yet-->
 
-
 <?php
 //Create a database connection
-	$dbhost = "192.168.1.36";
-	$dbuser = "rpi";
-	$dbpass = "thunderbolt";
-	$dbname = "dbavgspeed";
-	$connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+    $dbhost = "192.168.1.36";
+    $dbuser = "rpi";
+    $dbpass = "thunderbolt";
+    $dbname = "dbavgspeed";
+    $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
 //Checks for error and prints the error number
-	if(mysqli_connect_errno()){
-		echo(mysqli_connect_errno());
-	}
+    if(mysqli_connect_errno()){
+        echo(mysqli_connect_errno());
+    }
 
 //Perform database query
-	$query = "SELECT * FROM tbavgspeed";
-	$result = mysqli_query($connection, $query);
+    $query = "SELECT * FROM tbavgspeed";
+    $result = mysqli_query($connection, $query);
 
 //Check for query error
-	if(!$result){
-		echo ("Database query failed");
-	}
+    if(!$result){
+        echo ("Database query failed");
+    }
 ?>
 
 <html>
 <head>
-<title>Test Page</title>
+<title>Data Monitoring</title>
 <style>
 table {
-	font-family: arial, sans-serif;
-	border-collapse: collapse;
-	width: 60%;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 60%;
 }
 
 td {
-	text-align: center;
-	vertical-align: center;
-	padding: 12px;
-	width: 50%;
-
+    text-align: center;
+    vertical-align: center;
+    padding: 12px;
+    width: 50%;
 }
 
 th {
-	text-align: center;
-	vertical-align: center;
-	font-size: 18;
-	padding: 12px;
-	width: 50%;
-
+    text-align: center;
+    vertical-align: center;
+    font-size: 18;
+    padding: 12px;
+    width: 50%;
 }
 
 tr:nth-child(even) {
-	background-color: #f5f5f5;
+    background-color: #f5f5f5;
 }
 
 .on {
-	background-color: #00ffb4;
-	font-size: 10;
-	padding: 8px;
+    background-color: #00ffb4;
+    font-size: 10;
+    padding: 8px;
 }
 
 .off {
-	background-color: #ffa030;
-	font-size: 10;
-	padding: 8px;
+    background-color: #ffa030;
+    font-size: 10;
+    padding: 8px;
 }
 
 h2 {
-	font-family: Calibri;
-	margin: 16px;
+    font-family: Calibri;
+    margin: 16px;
 }
 </style>
 </head>
 <body>
 
 <?php
-	$avg_time = [];
-	$ip_address = [];
-	$status = [];
-	$avg_speed = [];
-	$i = 0;
-	while($tempstring = mysqli_fetch_assoc($result))
-	{
-		$avg_time[$i]=$tempstring["avg_time"];
-		$ip_address[$i]=$tempstring["ip_address"];
-		$status[$i]=$tempstring["status"];
-		$avg_speed[$i]=round(64/$avg_time[$i],2);
-		$i++;
-	}
+    $avg_time = [];
+    $ip_address = [];
+    $status = [];
+    $avg_speed = [];
+    $i = 0;
+    while($tempstring = mysqli_fetch_assoc($result))
+    {
+        $avg_time[$i]=$tempstring["avg_time"];
+        $ip_address[$i]=$tempstring["ip_address"];
+        $status[$i]=$tempstring["status"];
+        $avg_speed[$i]=round(64/$avg_time[$i],2);
+        $i++;
+    }
 ?>
 
 <center>
@@ -96,13 +93,13 @@ h2 {
 <table>
   <tr>
     <th style="border-left: 2px solid black; border-top: 2px solid black; border-bottom: 2px solid black">
-    	IP Address
+        IP Address
     </th>
     <th style="border-top: 2px solid black; border-bottom: 2px solid black">
-    	Speed (MB/s)
+        Speed (MB/s)
     </th>
     <th style="border-right: 2px solid black; border-top: 2px solid black; border-bottom: 2px solid black">
-    	Status
+        Status
     </th>
   </tr>
   <tr>
@@ -260,7 +257,7 @@ h2 {
 
 <?php
 //Release the data
-	mysqli_free_result($result);
+    mysqli_free_result($result);
 ?>
 
 </body>
