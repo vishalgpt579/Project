@@ -25,9 +25,26 @@
 ?>
 
 <html>
-<head><title>
-Test Page
-</title></head>
+<head>
+<title>Test Page</title>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+</head>
 <body>
 
 <?php
@@ -42,18 +59,76 @@ Test Page
 	}
 
 //This echos avg_time
-	for($i=0 ; $i<=9 ; $i++){
-		echo("$avg_time[$i]\n\n");
-	}
-?>
-<br />
-<hr />
-<?php
-//This echos ip_address
-	for($i=0 ; $i<=9 ; $i++){
-		echo("$ip_address[$i]\n\n");
-	}
+	// for($i=0 ; $i<=9 ; $i++){
+		// echo("$avg_time[$i]\n\n");
+	// }
 
+//This echos ip_address
+	// for($i=0 ; $i<=9 ; $i++){
+		// echo("$ip_address[$i]\n\n");
+	// }
+?>
+
+<table>
+  <tr>
+    <th>IP Address</th>
+    <th>Speed</th>
+    <th>Status</th>
+  </tr>
+  <tr>
+    <td><?php echo("$ip_address[0]")?></td>
+    <td><?php echo("$avg_time[0]")?></td>
+    <td>ON</td>
+  </tr>
+  <tr>
+    <td><?php echo("$ip_address[1]")?></td>
+    <td><?php echo("$avg_time[1]")?></td>
+    <td>ON</td>
+  </tr>
+  <tr>
+    <td><?php echo("$ip_address[2]")?></td>
+    <td><?php echo("$avg_time[2]")?></td>
+    <td>ON</td>
+  </tr>
+  <tr>
+    <td><?php echo("$ip_address[3]")?></td>
+    <td><?php echo("$avg_time[3]")?></td>
+    <td>ON</td>
+  </tr>
+  <tr>
+    <td><?php echo("$ip_address[4]")?></td>
+    <td><?php echo("$avg_time[4]")?></td>
+    <td>ON</td>
+  </tr>
+  <tr>
+    <td><?php echo("$ip_address[5]")?></td>
+    <td><?php echo("$avg_time[5]")?></td>
+    <td>ON</td>
+  </tr>
+  <tr>
+    <td><?php echo("$ip_address[6]")?></td>
+    <td><?php echo("$avg_time[6]")?></td>
+    <td>ON</td>
+  </tr>
+  <tr>
+    <td><?php echo("$ip_address[7]")?></td>
+    <td><?php echo("$avg_time[7]")?></td>
+    <td>ON</td>
+  </tr>
+  <tr>
+    <td><?php echo("$ip_address[8]")?></td>
+    <td><?php echo("$avg_time[8]")?></td>
+    <td>ON</td>
+  </tr>
+  <tr>
+    <td><?php echo("$ip_address[9]")?></td>
+    <td><?php echo("$avg_time[9]")?></td>
+    <td>ON</td>
+  </tr>
+
+</table>
+
+<?php
 //Release the data
 	mysqli_free_result($result);
 ?>
