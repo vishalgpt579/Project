@@ -1,5 +1,3 @@
-<!--This is code is not complete yet-->
-
 <?php
 //Create a database connection
     $dbhost = "192.168.1.36";
